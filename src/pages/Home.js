@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { fireDb } from '../firebase';
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import { Link } from 'react-router-dom';
 import "./Home.css";
@@ -35,9 +36,7 @@ const Home = () => {
       const contactRef = ref(db, `contacts/${id}`);
 
       remove(contactRef);
-  
       toast.error("Contact Removed");
-
     }
   }
 

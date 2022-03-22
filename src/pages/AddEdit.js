@@ -101,7 +101,7 @@ const AddEdit = () => {
   }
 
   return (
-    <div style={{marginTop: "100px"}}>
+    <div style={{marginTop: "50px"}}>
         <form 
           style={{
             margin: "auto", 
