@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { fireDb } from '../firebase';
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import { Link } from 'react-router-dom';
 import "./Home.css";
@@ -15,7 +14,7 @@ const Home = () => {
     onValue(dbRef, (snapshot) =>{
 
         console.log("SNAP: ", snapshot.val());
-        document.title = `FUCK THIS GUY ${snapshot.child("name").val()}`;
+        document.title = `FUCK THIS GUY firebase`;
         
         if(snapshot.val() !== null){
           setData({ ...snapshot.val() });
@@ -42,10 +41,8 @@ const Home = () => {
     }
   }
 
-  console.log(data);
-
   return (
-    <div style={{marginTop: '100px'}}>
+    <div style={{marginTop: '50px'}}>
       <h2>Home</h2>
       <table className='styled-table'>
         <thead>
@@ -73,9 +70,6 @@ const Home = () => {
                   >
                     Delete
                   </button>
-                  {/* <Link to={`/view/${id}`}>
-                    <button className='btn btn-view'>View</button>
-                  </Link> */}
                 </td>
               </tr>
             )

@@ -13,17 +13,14 @@ const initialState = {
 
 const AddEdit = () => {
   const [state, setState] = useState(initialState);
-  const [date, setDate] = useState({});
-
   const {name, email, contact} = state;
-
   const history = useNavigate();
-
   const {id} = useParams();
   const [data, setData] = useState({});
   const db = getDatabase();
   const dbRef = ref(db, 'contacts');
 
+  // Add
   useEffect(() => {
     onValue(dbRef, (snapshot) =>{
 
@@ -42,6 +39,7 @@ const AddEdit = () => {
     };
   }, [id]);
 
+  // Edit
   useEffect(() => {
     if(id) {
       setState({...data[id]});
@@ -92,7 +90,6 @@ const AddEdit = () => {
   function updateUserData(id, name, email, contact){
     const db = getDatabase();
     const contactRef = ref(db, `contacts/${id}`);
-    // const newContactRef = id;
 
     update(contactRef, {
       name: name,
